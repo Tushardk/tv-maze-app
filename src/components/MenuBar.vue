@@ -29,7 +29,9 @@ const menuItems = ref([
       <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
         <div class="text-md lg:flex-grow">
           <a href="/" class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-800 mr-4">
-            {{ menu }}
+            <router-link :to="{ name: 'home' }">
+              <div class="text-white text-md">{{ menu }}</div>
+            </router-link>
           </a>
         </div>
       </div>
