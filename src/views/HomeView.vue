@@ -13,7 +13,7 @@ const getGenre = (showGenre: any) => {
 
 <template>
   <main class="mb-24">
-    <div class="flex mt-8">
+    <div class="sm:flex mt-8">
       <!-- Loader -->
       <div v-if="allShowsLoading" class="flex justify-center items-center basis-3/4">
         <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
