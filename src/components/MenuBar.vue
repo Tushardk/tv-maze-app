@@ -25,7 +25,7 @@ onMounted(() => {
 <template>
 
   <!-- Navbar goes here -->
-  <nav class="bg-white shadow-lg">
+  <nav class="bg-white shadow-md">
     <div class="relative p-4">
       <div class="flex">
         <div class="flex space-x-7">
@@ -51,7 +51,7 @@ onMounted(() => {
       </div>
     </div>
     <!-- Mobile menu -->
-    <div class="hidden  absolute w-full mobile-menu z-40 bg-white">
+    <div class="hidden absolute w-full mobile-menu z-40 bg-white">
       <ul>
         <li v-for="menu in menuItems" class="block text-sm px-2 py-1 hover:bg-teal-500 transition duration-300">
           <router-link :to="{ name: 'home' }">
