@@ -21,7 +21,7 @@ const searchQuery = () => {
         placeholder="Search" @keydown.enter.prevent="searchQuery">
     </div>
     <button type="submit"
-      class="p-2.5 ml-2 text-sm font-medium text-white bg-teal-700 rounded-lg border border-teal-500 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800"
+      class="p-2.5 ml-2 text-sm font-medium text-white bg-teal-700 rounded-lg border border-teal-500 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800 hidden sm:block"
       @click.prevent="searchQuery">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

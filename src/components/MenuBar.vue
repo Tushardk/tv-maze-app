@@ -1,40 +1,66 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 
 const menuItems = ref([
   'Shows',
   'People',
   'Networks',
   'Web Channels',
-  'Articles',
   'Schedule',
   'Calendar',
   'Countdown',
-  'Forums',
 ]);
+
+onMounted(() => {
+  const btn = document.querySelector("button.mobile-menu-button");
+  const menu = document.querySelector(".mobile-menu");
+
+  btn?.addEventListener("click", () => {
+    menu?.classList.toggle("hidden");
+  });
+});
+
 </script>
 
 <template>
-  <nav class="flex items-center flex-wrap bg-teal-500 p-2 mb-6">
-    <div class="block lg:hidden">
-      <button
-        class="flex items-center px-3 py-2 border rounded text-white border-teal-400 hover:text-gray-800 hover:border-white">
-        <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <title>Menu</title>
-          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-        </svg>
-      </button>
-    </div>
-    <div v-for="menu in menuItems">
-      <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-        <div class="text-md lg:flex-grow">
-          <a href="/" class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-800 mr-4">
-            <router-link :to="{ name: 'home' }">
-              <div class="text-white text-md">{{ menu }}</div>
-            </router-link>
-          </a>
+
+  <!-- Navbar goes here -->
+  <nav class="bg-white shadow-lg">
+    <div class="relative p-4">
+      <div class="flex">
+        <div class="flex space-x-7">
+          <div class="hidden md:flex items-center space-x-1">
+            <div v-for="menu in menuItems">
+              <router-link :to="{ name: 'home' }">
+                <div class="py-2 px-2 text-gray-500 font-semibold hover:text-teal-500 transition duration-300">
+                  {{ menu }}
+                </div>
+              </router-link>
+            </div>
+          </div>
+        </div>
+        <!-- Mobile menu button -->
+        <div class="md:hidden flex items-center">
+          <button class="outline-none mobile-menu-button">
+            <svg class=" w-6 h-6 text-gray-500 hover:text-teal-500 " x-show="!showMenu" fill="none"
+              stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
         </div>
       </div>
+    </div>
+    <!-- Mobile menu -->
+    <div class="hidden  absolute w-full mobile-menu z-40 bg-white">
+      <ul>
+        <li v-for="menu in menuItems" class="block text-sm px-2 py-2 hover:bg-teal-500 transition duration-300">
+          <router-link :to="{ name: 'home' }">
+            <div class="py-2 px-2 text-gray-500 font-semibold hover:text-white transition duration-300">
+              {{ menu }}
+            </div>
+          </router-link>
+        </li>
+      </ul>
     </div>
   </nav>
 </template>

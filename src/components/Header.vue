@@ -20,12 +20,12 @@ import SearchBar from './SearchBar.vue';
 			<div class="flex justify-between items-center lg:basis-1/4 sm:justify-end">
 				<div>
 					<button class="bg-teal-700 hover:bg-teal-800 text-white font-bold py-2 px-4 rounded sm:mr-2">
-						Login
+						Register
 					</button>
 				</div>
 				<div>
 					<button class="bg-teal-700 hover:bg-teal-800 text-white font-bold py-2 px-4 rounded">
-						Register
+						Login
 					</button>
 				</div>
 			</div>
