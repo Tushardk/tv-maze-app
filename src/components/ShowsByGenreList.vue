@@ -19,7 +19,24 @@ const showsByGenre = computed(() => {
   <div v-for="shows in showsByGenre" class="flex justify-center bg-gray-100 rounded-xl py-8">
     <div v-for="(show, index ) in shows">
       <router-link :to="{ name: 'showDetails', params: { id: show.id }}">
-        <div v-if="index < 5" class="mx-6 transform hover:scale-105">
+        <!-- Only 2 show posters for mobile like devices -->
+        <div v-if="index < 2" class="hidden max-md:block mx-6 transform hover:scale-105">
+          <img :src="show.image.medium" :alt="show.name">
+          <div class="text-sm text-white bg-teal-500 p-1">
+            <div>{{ show.name }}</div>
+            <div class="font-bold">&#9733; {{ show.rating.average }}</div>
+          </div>
+        </div>
+        <!-- Only 4 show posters for tablet like devices -->
+        <div v-if="index < 3" class="hidden md:max-lg:block mx-6 transform hover:scale-105">
+          <img :src="show.image.medium" :alt="show.name">
+          <div class="text-sm text-white bg-teal-500 p-1">
+            <div>{{ show.name }}</div>
+            <div class="font-bold">&#9733; {{ show.rating.average }}</div>
+          </div>
+        </div>
+        <!-- Only 5 show posters for above tablet like devices -->
+        <div v-if="index < 5" class="hidden lg:block mx-6 transform hover:scale-105">
           <img :src="show.image.medium" :alt="show.name">
           <div class="text-sm text-white bg-teal-500 p-1">
             <div>{{ show.name }}</div>

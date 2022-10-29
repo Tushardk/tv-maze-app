@@ -53,7 +53,7 @@ onMounted(() => {
     <!-- Mobile menu -->
     <div class="hidden  absolute w-full mobile-menu z-40 bg-white">
       <ul>
-        <li v-for="menu in menuItems" class="block text-sm px-2 py-2 hover:bg-teal-500 transition duration-300">
+        <li v-for="menu in menuItems" class="block text-sm px-2 py-1 hover:bg-teal-500 transition duration-300">
           <router-link :to="{ name: 'home' }">
             <div class="py-2 px-2 text-gray-500 font-semibold hover:text-white transition duration-300">
               {{ menu }}

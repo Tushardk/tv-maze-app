@@ -10,7 +10,7 @@ const { allGenres } = useShows();
     More genres...
   </div>
   <div class="flex flex-wrap justify-center p-4">
-    <div v-for="genre in allGenres" class="w-fit rounded-full bg-teal-500 px-2 py-1 m-2 transform hover:scale-105">
+    <div v-for="genre in allGenres" class="w-fit rounded-full text-center bg-teal-500 px-2 py-1 m-2 transform hover:scale-105">
       <router-link :to="{ name: 'allShowsByGenre', params: { genre }}">
         <div class="text-white text-md"> {{ genre }}</div>
       </router-link>
