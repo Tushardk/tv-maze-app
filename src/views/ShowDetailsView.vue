@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import { ref, onBeforeMount } from 'vue'
+import type { Ref } from 'vue'
 import { useRoute } from 'vue-router';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import GoBackLink from '@/components/GoBackLink.vue';
 import ShowInformation from '@/components/ShowInformation.vue';
+import type { Show } from '@/types';
 
 const route = useRoute();
-const showDetails: any = ref({});
-const isLoading: any = ref(true);
+const showDetails: Ref<Show> = ref({} as Show);
+const isLoading: Ref<boolean> = ref(true);
 
 onBeforeMount(async () => {
   isLoading.value = true;
@@ -15,6 +17,8 @@ onBeforeMount(async () => {
     async (data) => {
       showDetails.value = data.data;
       isLoading.value = false;
+    }).catch((error: AxiosError) => {
+      console.log(`Request failed with reason - ${error?.response?.status}`);
     });
 })
 </script>

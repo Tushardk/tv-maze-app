@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useShows } from "../composables/useShows"
-import ShowsList from '@/components/ShowsList.vue';
+import type { Show } from '@/types';
 
 const { showsByGenres } = useShows();
 const props = defineProps(['genre']);
 
 const showsByGenre = computed(() => {
-  return showsByGenres.value.find((show: any) => {
+  return showsByGenres.value.find((show: Show) => {
     if (Object.keys(show)[0] === props.genre) {
       return show;
     }

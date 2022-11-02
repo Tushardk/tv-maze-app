@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
 import { useRoute } from 'vue-router'
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import GoBackLink from '@/components/GoBackLink.vue';
 
 const searchResult: any = ref({});
-const route: any = useRoute();
+const route = useRoute();
 
 watch(route, async () => {
   await axios.get(`https://api.tvmaze.com/search/shows?q=${route.params.searchTerm}`).then(
-    async (data) => {
-      searchResult.value = data.data;
-    }).catch((error) => {
+    async (response) => {
+      searchResult.value = response.data;
+    }).catch((error: AxiosError) => {
       console.log(`Request failed with reason - ${error?.response?.status}`);
     });
 }, {

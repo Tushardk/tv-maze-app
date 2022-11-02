@@ -4,12 +4,13 @@ import { useRoute } from 'vue-router';
 import { useShows } from "../composables/useShows"
 import ShowsList from '@/components/ShowsList.vue';
 import GoBackLink from '@/components/GoBackLink.vue';
+import type { Show } from '@/types';
 
 const route = useRoute();
 const { showsByGenres } = useShows();
 
 const showsByGenre = computed(() => {
-  return showsByGenres.value.find((show: any) => {
+  return showsByGenres.value.find((show: Show) => {
     if (Object.keys(show)[0] === route.params.genre) {
       return show;
     }
