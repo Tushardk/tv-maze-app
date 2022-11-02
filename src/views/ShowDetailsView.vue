@@ -3,10 +3,11 @@ import { ref, onBeforeMount } from 'vue'
 import { useRoute } from 'vue-router';
 import axios from 'axios';
 import GoBackLink from '@/components/GoBackLink.vue';
+import ShowInformation from '@/components/ShowInformation.vue';
 
 const route = useRoute();
 const showDetails: any = ref({});
-const isLoading: any = ref(false);
+const isLoading: any = ref(true);
 
 onBeforeMount(async () => {
   isLoading.value = true;
@@ -27,32 +28,17 @@ onBeforeMount(async () => {
     </div>
     <span> Loading</span>
   </div>
+
   <div v-else class="m-2 rounded-xl px-4 py-6 bg-gray-100">
     <div class="text-center text-2xl font-bold mb-3">{{ showDetails?.name }}</div>
     <div class="sm:flex sm:flex-row">
-      <div class="max-md:mx-16 mb-2 sm:basis-2/5">
+      <div class="max-md:mx-16 lg:mx-32 mb-2 sm:basis-2/5">
         <img v-if="showDetails?.image?.original" :src="showDetails?.image?.original" :alt="showDetails?.name"
           class="m-auto">
         <div v-else class="py-32 text-center">Preview not available</div>
       </div>
-      <div class="mx-2 italic sm:ml-4 sm:basis-3/5">
-        <div v-html="showDetails?.summary" class="text-center mb-2"></div>
-        <div>
-          <div>Stars: {{ showDetails?.rating.average }} </div>
-          <hr>
-          <div>Runtime: {{ showDetails?.runtime }} </div>
-          <hr>
-          <div>Status : {{ showDetails?.status }} </div>
-          <hr>
-          <div>Runtime : {{ showDetails?.runtime }} </div>
-          <hr>
-          <div>Average Runtime : {{ showDetails?.averageRuntime }} </div>
-          <hr>
-          <div>Premiered : {{ showDetails?.premiered }} </div>
-          <hr>
-          <div>Ended : {{ showDetails?.ended }} </div>
-          <hr>
-        </div>
+      <div class="mx-2 sm:ml-4 sm:basis-3/5">
+        <ShowInformation :showDetails="showDetails" />
       </div>
     </div>
   </div>

@@ -1,1 +1,0 @@
-import{f as c,c as s}from"./index.6f98a815.js";const a=(e,o)=>{const r=e.__vccOpts||e;for(const[t,n]of o)r[t]=n;return r},l={};function i(e,o){return c(),s("div",{class:"p-2 cursor-pointer text-blue-500 hover:text-blue-800 hover:underline",onClick:o[0]||(o[0]=r=>e.$router.go(-1))}," < < back ")}const f=a(l,[["render",i]]);export{f as G};

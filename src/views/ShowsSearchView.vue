@@ -1,19 +1,24 @@
 <script setup lang="ts">
-import { ref, onBeforeMount } from 'vue';
+import { ref, watch } from 'vue';
 import { useRoute } from 'vue-router'
 import axios from 'axios';
 import GoBackLink from '@/components/GoBackLink.vue';
 
 const searchResult: any = ref({});
-const route = useRoute();
+const route: any = useRoute();
 
-onBeforeMount(async () => {
+watch(route, async () => {
   await axios.get(`https://api.tvmaze.com/search/shows?q=${route.params.searchTerm}`).then(
     async (data) => {
       searchResult.value = data.data;
+    }).catch((error) => {
+      console.log(`Request failed with reason - ${error?.response?.status}`);
     });
-});
-
+}, {
+  deep: true,
+  immediate: true,
+}
+)
 
 </script>
 
@@ -28,9 +33,15 @@ onBeforeMount(async () => {
     <div v-for="result in searchResult">
       <router-link :to="{ name: 'showDetails', params: { id: result.show.id } }">
         <div class="m-2">
-          <img v-if="result?.show?.image?.medium" :src="result?.show?.image?.medium" :alt="result.show.name" class="m-auto">
+          <img v-if="result?.show?.image?.medium" :src="result?.show?.image?.medium" :alt="result.show.name"
+            class="m-auto">
           <div v-else class="py-32">Preview not available</div>
-          <div class="text-sm text-white bg-teal-500 py-4 px-1">{{ result.show.name }}</div>
+          <div class="text-sm text-white bg-teal-500 py-4 px-1">
+            <div>{{ result.show.name }}</div>
+            <div v-if="result?.show?.rating?.average" class="font-bold">&#9733; {{ result?.show?.rating?.average
+            }}</div>
+            <div v-else>&#9733; - Not available</div>
+          </div>
         </div>
       </router-link>
     </div>

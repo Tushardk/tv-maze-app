@@ -15,17 +15,17 @@ const router = createRouter({
     {
       path: '/show/:id',
       name: "showDetails",
-      component: () => import("../views/ShowDetailsView.vue"),
+      component: ShowDetailsView,
     },
     {
       path: '/genres/:genre',
       name: "allShowsByGenre",
-      component: () => import("../views/AllShowsByGenreView.vue"),
+      component: AllShowsByGenreView,
     },
     {
       path: '/search/shows/:searchTerm',
-      name: "ShowsSearchView",
-      component: () => import("../views/ShowsSearchView.vue"),
+      name: "showsSearch",
+      component: ShowsSearchView,
     },
   ],
 });

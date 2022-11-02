@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router';
 import { useShows } from "../composables/useShows"
+import ShowsList from '@/components/ShowsList.vue';
 import GoBackLink from '@/components/GoBackLink.vue';
 
 const route = useRoute();
@@ -25,14 +26,6 @@ const showsByGenre = computed(() => {
   </div>
 
   <div v-for="shows in showsByGenre" class="flex flex-wrap justify-center bg-gray-100 rounded-xl p-2">
-    <div v-for="(show ) in shows">
-      <router-link :to="{ name: 'showDetails', params: { id: show.id } }">
-        <div class="m-2">
-          <img v-if="show?.image?.medium" :src="show?.image?.medium" :alt="show?.name" class="m-auto">
-          <div v-else class="py-32">Preview not available</div>
-          <div class="text-sm text-white text-center bg-teal-500 py-4 px-1">{{ show.name }}</div>
-        </div>
-      </router-link>
-    </div>
+    <ShowsList :shows=shows></ShowsList>
   </div>
 </template>
