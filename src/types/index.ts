@@ -4,7 +4,7 @@ export interface Show {
   name: string;
   type: string;
   language: string;
-  genres?: (string)[] | null;
+  genres?: string[] | null;
   status: string;
   runtime: number;
   averageRuntime: number;
@@ -13,7 +13,7 @@ export interface Show {
   officialSite: string;
   schedule: Schedule;
   rating: Rating;
-  weight: number; 
+  weight: number;
   network: Network;
   webChannel?: null;
   dvdCountry?: null;
@@ -25,7 +25,7 @@ export interface Show {
 }
 export interface Schedule {
   time: string;
-  days?: (string)[] | null;
+  days?: string[] | null;
 }
 export interface Rating {
   average: number;
@@ -57,7 +57,6 @@ export interface Links {
 export interface SelfOrPreviousepisode {
   href: string;
 }
-
 export interface ShowsByGenres {
   [key: string]: Show[];
 }

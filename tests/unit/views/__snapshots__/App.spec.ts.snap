@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing HomeView.vue wrapper component App.vue should be rendered correctly 1`] = `
+<div
+  data-v-app=""
+>
+  
+  <header-stub />
+  <routerview />
+  
+</div>
+`;
